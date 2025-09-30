@@ -4,17 +4,13 @@ public class EligeTuPropiaAventura {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-
-        System.out.println("Bienvenido a 'Las última aventura de una araña en 1ºDAM'. Antes de empezar, dime el nombre de la araña valiente:");
+        System.out.println("Bienvenido a 'La última aventura de una araña en 1ºDAM'. Antes de empezar, dime el nombre de la araña valiente:");
         System.out.print("Nombre de la araña: ");
         String nombre = sc.nextLine().trim();
-        if (nombre.isEmpty()) nombre = "Luma";
-
 
         int distanciaSubida = 0;
         int distanciaBajada = 0;
         int presasCazadas = 0;
-        boolean sobrevivio = true;
         int tiempoMin = 0;
         double velocidadMedia = 0.0;
 
@@ -26,28 +22,30 @@ public class EligeTuPropiaAventura {
         System.out.println("Decisión 1:");
         System.out.println("1) Escalar por el cable del proyector hacia el techo del aula.");
         System.out.println("2) Avanzar por el suelo, bordeando mochilas y zapatillas curiosas.");
-        int d1 = leer(sc, 1, 2);
+        System.out.print("Elige (" + 1 + "-" + 2 + "): ");
+        int d1 = leerNumero(sc);
 
         if (d1 == 1) {
-            distanciaSubida += 2; // sube 2 m por el cable
+            distanciaSubida += 2;
             tiempoMin += 3;
             System.out.println("\n" +
                     "Con paciencia, " + nombre + " asciende el cable negro del proyector. " +
                     "La altura impresiona, pero desde allí se ve todo el reino de mesas, " +
                     "pantallas azules y cuadernos con garabatos. El techo ofrece rutas silenciosas.\n");
         } else {
-            distanciaBajada += 1; // caminar a ras de suelo implica pequeñas bajadas entre cables
+            distanciaBajada += 1;
             tiempoMin += 4;
             System.out.println("\n" +
-                    "A ras del suelo, " + nombre + " avanza como una sombra diminuta." +
-                    " Entre botellas de agua, mochilas gigantes y suelas inquietas, cada paso parece una oportunidad para morir.\n");
+                    "A ras del suelo, " + nombre + " avanza como una sombra diminuta. " +
+                    "Entre botellas de agua, mochilas gigantes y suelas inquietas, cada paso parece una oportunidad para morir.\n");
         }
 
         // DECISIÓN 2
         System.out.println("Decisión 2:");
         System.out.println("1) Buscar alimento: tejer una pequeña red junto a la ventana abierta.");
         System.out.println("2) Priorizar seguridad: esconderse bajo la repisa del radiador.");
-        int d2 = leer(sc, 1, 2);
+        System.out.print("Elige (" + 1 + "-" + 2 + "): ");
+        int d2 = leerNumero(sc);
 
         if (d2 == 1) {
             presasCazadas += 1;
@@ -70,7 +68,8 @@ public class EligeTuPropiaAventura {
         System.out.println("Decisión 3:");
         System.out.println("1) Cruzar el pasillo para alcanzar la pared opuesta, donde hay un póster.");
         System.out.println("2) Permanecer en la zona actual y asegurar una base resistente.");
-        int d3 = leer(sc, 1, 2);
+        System.out.print("Elige (" + 1 + "-" + 2 + "): ");
+        int d3 = leerNumero(sc);
 
 
         System.out.println();
@@ -83,7 +82,6 @@ public class EligeTuPropiaAventura {
                             "Cruza un vacío intimidante, hilando una pasarela temporal. Al llegar, " +
                             "encuentra motas dulces y captura otra presa diminuta. Es un triunfo limpio.\n"
             );
-            sobrevivio = true;
         } else if (d1 == 1 && d2 == 1 && d3 == 2) {
             tiempoMin += 3;
             System.out.println(
@@ -91,7 +89,6 @@ public class EligeTuPropiaAventura {
                             "y ajustando radios, convierte un rincón modesto en una trampa elegante. " +
                             "El día transcurre con buen ritmo y la serenidad de un taller silencioso.\n"
             );
-            sobrevivio = true;
         } else if (d1 == 1 && d2 == 2 && d3 == 1) {
             distanciaBajada += 1;
             tiempoMin += 5;
@@ -100,7 +97,6 @@ public class EligeTuPropiaAventura {
                             nombre + " pierde un hilo y cae un pequeño tramo, pero se recupera con templanza. " +
                             "Aprende a leer el aire del aula, como quien entiende un idioma nuevo.\n"
             );
-            sobrevivio = true;
         } else if (d1 == 1 && d2 == 2 && d3 == 2) {
             tiempoMin += 2;
             System.out.println(
@@ -108,7 +104,6 @@ public class EligeTuPropiaAventura {
                             "La seguridad es aceptable, aunque el hambre araña la paciencia. " +
                             "El murmullo de los estudiantes se vuelve una nana sorprendentemente útil.\n"
             );
-            sobrevivio = true;
         } else if (d1 == 2 && d2 == 1 && d3 == 1) {
             distanciaSubida += 2;
             tiempoMin += 6;
@@ -117,9 +112,8 @@ public class EligeTuPropiaAventura {
                     "El ascenso desde el suelo hacia el póster exige audacia. " +
                             nombre + " traza un zigzag robusto y, en mitad del camino, " +
                             "un par de mosquitos despistados quedan atrapados en un hilo auxiliar. " +
-                            "La pared opuesta ofrece una cumbre bien merecida\n."
+                            "La pared opuesta ofrece una cumbre bien merecida.\n"
             );
-            sobrevivio = true;
         } else if (d1 == 2 && d2 == 1 && d3 == 2) {
             tiempoMin += 3;
             System.out.println(
@@ -127,7 +121,6 @@ public class EligeTuPropiaAventura {
                             nombre + " ajusta tensiones con precisión delicada. " +
                             "No es un festín, pero la constancia alimenta y la calma enseña.\n"
             );
-            sobrevivio = true;
         } else if (d1 == 2 && d2 == 2 && d3 == 1) {
             distanciaBajada += 1;
             tiempoMin += 5;
@@ -136,7 +129,6 @@ public class EligeTuPropiaAventura {
                             "patadas involuntarias y el monstruo aspirador de un conserje distraído. " +
                             "Un salto medido lo salva a última hora. La experiencia deja respeto y orgullo.\n"
             );
-            sobrevivio = true;
         } else {
             tiempoMin += 2;
             System.out.println(
@@ -144,19 +136,17 @@ public class EligeTuPropiaAventura {
                             nombre + " halla un recoveco tibio, sin gloria inmediata, " +
                             "aunque con la promesa humilde de llegar vivo al próximo descanso.\n"
             );
-            sobrevivio = true;
         }
 
         int distanciaTotal = distanciaSubida + distanciaBajada;
         if (tiempoMin > 0) {
-            velocidadMedia = (double) distanciaTotal / (double) tiempoMin; // m/min
+            velocidadMedia = (double) distanciaTotal / (double) tiempoMin;
         } else {
             velocidadMedia = 0.0;
         }
 
-        System.out.println("\n===== Resumen de la aventura =====");
+        System.out.println("===== Resumen de la aventura =====");
         System.out.println("Araña: " + nombre);
-        System.out.println("Sobrevivió: " + (sobrevivio ? "sí" : "no"));
         System.out.println("Distancia subida (m): " + distanciaSubida);
         System.out.println("Distancia bajada (m): " + distanciaBajada);
         System.out.println("Distancia total (m): " + distanciaTotal);
@@ -167,15 +157,13 @@ public class EligeTuPropiaAventura {
         sc.close();
     }
 
-    private static int leer(Scanner sc, int min, int max) {
-        while (true) {
-            System.out.print("Elige (" + min + "-" + max + "): ");
-            String s = sc.nextLine().trim();
-            try {
-                int v = Integer.parseInt(s);
-                if (v >= min && v <= max) return v;
-            } catch (NumberFormatException ignored) {}
-            System.out.println("Entrada inválida. Intenta de nuevo.");
+    private static int leerNumero(Scanner sc) {
+        int value = sc.nextInt();
+        while (value != 1 && value != 2) {
+            System.out.print("El numero introducido no es valido. Intente de nuevo: ");
+            value = sc.nextInt();
         }
+        return value;
     }
+
 }
